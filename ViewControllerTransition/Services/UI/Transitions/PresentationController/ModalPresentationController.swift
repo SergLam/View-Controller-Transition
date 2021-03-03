@@ -1,18 +1,23 @@
 import UIKit
-import Cartography
 
-class ModalPresentationController: UIPresentationController {
+final class ModalPresentationController: UIPresentationController {
 
     lazy var fadeView: UIView = .make(backgroundColor: UIColor.black.withAlphaComponent(0.3), alpha: 0.0)
 
     override func presentationTransitionWillBegin() {
+        
         guard let containerView = containerView else { return }
         containerView.insertSubview(fadeView, at: 0)
 
-        constrain(fadeView) {
-            $0.edges == $0.superview!.edges
-        }
-
+        fadeView.translatesAutoresizingMaskIntoConstraints = false
+        let fadeViewConstraints: [NSLayoutConstraint] = [
+            fadeView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
+            fadeView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
+            fadeView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            fadeView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+        ]
+        NSLayoutConstraint.activate(fadeViewConstraints)
+        
         guard let coordinator = presentedViewController.transitionCoordinator else {
             fadeView.alpha = 1.0
             return
@@ -24,6 +29,7 @@ class ModalPresentationController: UIPresentationController {
     }
 
     override func dismissalTransitionWillBegin() {
+        
         guard let coordinator = presentedViewController.transitionCoordinator else {
             fadeView.alpha = 0.0
             return
@@ -37,11 +43,15 @@ class ModalPresentationController: UIPresentationController {
     }
 
     override func containerViewWillLayoutSubviews() {
+        
         presentedView?.frame = frameOfPresentedViewInContainerView
     }
 
     override var frameOfPresentedViewInContainerView: CGRect {
-        guard let containerView = containerView, let presentedView = presentedView else { return .zero }
+        
+        guard let containerView = containerView, let presentedView = presentedView else {
+            return .zero
+        }
 
         let inset: CGFloat = 16
         let safeAreaFrame = containerView.bounds.inset(by: containerView.safeAreaInsets)

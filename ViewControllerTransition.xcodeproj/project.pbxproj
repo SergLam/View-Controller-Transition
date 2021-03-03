@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,7 +12,6 @@
 		65830CFB240EA233004DC2A4 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65830CFA240EA233004DC2A4 /* HomeViewController.swift */; };
 		65830D00240EA235004DC2A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65830CFF240EA235004DC2A4 /* Assets.xcassets */; };
 		65830D03240EA235004DC2A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 65830D01240EA235004DC2A4 /* LaunchScreen.storyboard */; };
-		65830D0C240EA361004DC2A4 /* Cartography in Frameworks */ = {isa = PBXBuildFile; productRef = 65830D0B240EA361004DC2A4 /* Cartography */; };
 		65830D0E240EA3A9004DC2A4 /* ViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65830D0D240EA3A9004DC2A4 /* ViewFactory.swift */; };
 		65830D17240EA4D3004DC2A4 /* ModalTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65830D0F240EA4D2004DC2A4 /* ModalTransitionAnimator.swift */; };
 		65830D18240EA4D3004DC2A4 /* InteractionControlling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65830D10240EA4D2004DC2A4 /* InteractionControlling.swift */; };
@@ -23,6 +22,7 @@
 		65830D1E240EA4D3004DC2A4 /* ModalTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65830D16240EA4D3004DC2A4 /* ModalTransitionManager.swift */; };
 		65830D21240EA615004DC2A4 /* OneWayPanGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65830D20240EA615004DC2A4 /* OneWayPanGestureRecognizer.swift */; };
 		65830D24240EA6A1004DC2A4 /* CoolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65830D23240EA6A1004DC2A4 /* CoolViewController.swift */; };
+		7CB3B93925EFB30300E7D95E /* VendorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CB3B93825EFB30300E7D95E /* VendorService.swift */; };
 		7CD9B31E25EF96EF00124A88 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD9B31D25EF96EF00124A88 /* Colors.xcassets */; };
 		7CD9B32125EF989200124A88 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7CD9B32025EF989200124A88 /* Images.xcassets */; };
 /* End PBXBuildFile section */
@@ -45,6 +45,7 @@
 		65830D16240EA4D3004DC2A4 /* ModalTransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModalTransitionManager.swift; sourceTree = "<group>"; };
 		65830D20240EA615004DC2A4 /* OneWayPanGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneWayPanGestureRecognizer.swift; sourceTree = "<group>"; };
 		65830D23240EA6A1004DC2A4 /* CoolViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoolViewController.swift; sourceTree = "<group>"; };
+		7CB3B93825EFB30300E7D95E /* VendorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VendorService.swift; sourceTree = "<group>"; };
 		7CD9B31D25EF96EF00124A88 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		7CD9B32025EF989200124A88 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -54,7 +55,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65830D0C240EA361004DC2A4 /* Cartography in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,7 +86,6 @@
 				7CD9B31625EF966E00124A88 /* UserStory */,
 				7CD9B31425EF966000124A88 /* Application */,
 				65830D22240EA683004DC2A4 /* Services */,
-				65830D1F240EA4D9004DC2A4 /* Transitions */,
 			);
 			path = ViewControllerTransition;
 			sourceTree = "<group>";
@@ -94,13 +93,9 @@
 		65830D1F240EA4D9004DC2A4 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
-				65830D11240EA4D2004DC2A4 /* CustomPresentable.swift */,
-				65830D10240EA4D2004DC2A4 /* InteractionControlling.swift */,
-				65830D13240EA4D3004DC2A4 /* ModalPresentationController.swift */,
-				65830D0F240EA4D2004DC2A4 /* ModalTransitionAnimator.swift */,
-				65830D16240EA4D3004DC2A4 /* ModalTransitionManager.swift */,
-				65830D14240EA4D3004DC2A4 /* StandardInteractionController.swift */,
-				65830D15240EA4D3004DC2A4 /* UIViewController+Transitions.swift */,
+				7CD6A4F725EFA6790097F898 /* Protocols */,
+				7CD6A4F525EFA62A0097F898 /* PresentationController */,
+				7CD6A4F425EFA5450097F898 /* Extensions */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -108,9 +103,45 @@
 		65830D22240EA683004DC2A4 /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				65830D0D240EA3A9004DC2A4 /* ViewFactory.swift */,
+				7CD9B32425EF9C2000124A88 /* UI */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		7CD6A4F425EFA5450097F898 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				65830D15240EA4D3004DC2A4 /* UIViewController+Transitions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7CD6A4F525EFA62A0097F898 /* PresentationController */ = {
+			isa = PBXGroup;
+			children = (
+				7CD6A4F625EFA6470097F898 /* AnimationManagment */,
+				65830D13240EA4D3004DC2A4 /* ModalPresentationController.swift */,
+			);
+			path = PresentationController;
+			sourceTree = "<group>";
+		};
+		7CD6A4F625EFA6470097F898 /* AnimationManagment */ = {
+			isa = PBXGroup;
+			children = (
+				65830D14240EA4D3004DC2A4 /* StandardInteractionController.swift */,
+				65830D0F240EA4D2004DC2A4 /* ModalTransitionAnimator.swift */,
+				65830D16240EA4D3004DC2A4 /* ModalTransitionManager.swift */,
+			);
+			path = AnimationManagment;
+			sourceTree = "<group>";
+		};
+		7CD6A4F725EFA6790097F898 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				65830D11240EA4D2004DC2A4 /* CustomPresentable.swift */,
+				65830D10240EA4D2004DC2A4 /* InteractionControlling.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		7CD9B31425EF966000124A88 /* Application */ = {
@@ -118,6 +149,7 @@
 			children = (
 				65830CF6240EA233004DC2A4 /* AppDelegate.swift */,
 				65830CF8240EA233004DC2A4 /* SceneDelegate.swift */,
+				7CB3B93825EFB30300E7D95E /* VendorService.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -166,6 +198,15 @@
 			path = BundleFiles;
 			sourceTree = "<group>";
 		};
+		7CD9B32425EF9C2000124A88 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				65830D1F240EA4D9004DC2A4 /* Transitions */,
+				65830D0D240EA3A9004DC2A4 /* ViewFactory.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -183,7 +224,6 @@
 			);
 			name = ViewControllerTransition;
 			packageProductDependencies = (
-				65830D0B240EA361004DC2A4 /* Cartography */,
 			);
 			productName = ViewControllerTransitionExample;
 			productReference = 65830CF3240EA233004DC2A4 /* ViewControllerTransition.app */;
@@ -197,7 +237,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 1120;
 				LastUpgradeCheck = 1120;
-				ORGANIZATIONNAME = "Daniel Gauthier";
+				ORGANIZATIONNAME = "Serg Liamthev";
 				TargetAttributes = {
 					65830CF2240EA233004DC2A4 = {
 						CreatedOnToolsVersion = 11.2.1;
@@ -214,7 +254,6 @@
 			);
 			mainGroup = 65830CEA240EA233004DC2A4;
 			packageReferences = (
-				65830D0A240EA361004DC2A4 /* XCRemoteSwiftPackageReference "Cartography" */,
 			);
 			productRefGroup = 65830CF4240EA233004DC2A4 /* Products */;
 			projectDirPath = "";
@@ -249,6 +288,7 @@
 				65830D1E240EA4D3004DC2A4 /* ModalTransitionManager.swift in Sources */,
 				65830D17240EA4D3004DC2A4 /* ModalTransitionAnimator.swift in Sources */,
 				65830D1D240EA4D3004DC2A4 /* UIViewController+Transitions.swift in Sources */,
+				7CB3B93925EFB30300E7D95E /* VendorService.swift in Sources */,
 				65830D19240EA4D3004DC2A4 /* CustomPresentable.swift in Sources */,
 				65830CF7240EA233004DC2A4 /* AppDelegate.swift in Sources */,
 				65830D1B240EA4D3004DC2A4 /* ModalPresentationController.swift in Sources */,
@@ -448,25 +488,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		65830D0A240EA361004DC2A4 /* XCRemoteSwiftPackageReference "Cartography" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/robb/Cartography.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		65830D0B240EA361004DC2A4 /* Cartography */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 65830D0A240EA361004DC2A4 /* XCRemoteSwiftPackageReference "Cartography" */;
-			productName = Cartography;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 65830CEB240EA233004DC2A4 /* Project object */;
 }

@@ -1,6 +1,6 @@
 import UIKit
 
-class ModalTransitionAnimator: NSObject {
+final class ModalTransitionAnimator: NSObject {
 
     private let presenting: Bool
 
@@ -12,9 +12,13 @@ class ModalTransitionAnimator: NSObject {
 
 extension ModalTransitionAnimator: UIViewControllerAnimatedTransitioning {
 
-    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval { 0.5 }
+    func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
+        
+        return 0.5
+    }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
+        
         if presenting {
             animatePresentation(using: transitionContext)
         } else {
@@ -23,7 +27,10 @@ extension ModalTransitionAnimator: UIViewControllerAnimatedTransitioning {
     }
 
     private func animatePresentation(using transitionContext: UIViewControllerContextTransitioning) {
-        let presentedViewController = transitionContext.viewController(forKey: .to)!
+        
+        guard let presentedViewController = transitionContext.viewController(forKey: .to) else {
+            return
+        }
         transitionContext.containerView.addSubview(presentedViewController.view)
 
         let presentedFrame = transitionContext.finalFrame(for: presentedViewController)
@@ -43,7 +50,10 @@ extension ModalTransitionAnimator: UIViewControllerAnimatedTransitioning {
     }
 
     private func animateDismissal(using transitionContext: UIViewControllerContextTransitioning) {
-        let presentedViewController = transitionContext.viewController(forKey: .from)!
+        
+        guard let presentedViewController = transitionContext.viewController(forKey: .from) else {
+            return
+        }
         let presentedFrame = transitionContext.finalFrame(for: presentedViewController)
         let dismissedFrame = CGRect(x: presentedFrame.minX, y: transitionContext.containerView.bounds.height, width: presentedFrame.width, height: presentedFrame.height)
 

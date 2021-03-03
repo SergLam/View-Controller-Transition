@@ -1,5 +1,4 @@
 import UIKit
-import Cartography
 
 final class HomeViewController: UIViewController {
 
@@ -10,19 +9,36 @@ final class HomeViewController: UIViewController {
                                         height: 50.0,
                                         cornerRadius: 25.0,
                                         padding: 16.0)
-
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        view.addSubview(presentButton)
-        constrain(presentButton) {
-            $0.center == $0.superview!.center
-        }
-
-        presentButton.addTarget(self, action: #selector(presentButtonTapped), for: .touchUpInside)
+        
+        initialSetup()
     }
 
-    @objc private func presentButtonTapped() {
+    private func initialSetup() {
+        
+        setupLayout()
+        presentButton.addTarget(self, action: #selector(presentButtonTapped), for: .touchUpInside)
+    }
+    
+    private func setupLayout() {
+        
+        view.backgroundColor = .systemBackground
+        view.addSubview(presentButton)
+        
+        presentButton.translatesAutoresizingMaskIntoConstraints = false
+        let presentButtonConstraints: [NSLayoutConstraint] = [
+            presentButton.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            presentButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+        ]
+        NSLayoutConstraint.activate(presentButtonConstraints)
+    }
+    
+    // MARK: - Actions
+    @objc
+    private func presentButtonTapped() {
+        
         let coolViewController = CoolViewController()
         present(coolViewController, interactiveDismissalType: .standard)
     }

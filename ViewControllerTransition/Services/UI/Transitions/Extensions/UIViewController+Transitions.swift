@@ -6,7 +6,10 @@ enum InteractiveDismissalType {
 }
 
 extension UIViewController {
-    func present(_ viewController: CustomPresentable, interactiveDismissalType: InteractiveDismissalType, completion: (() -> Void)? = nil) {
+    
+    func present(_ viewController: CustomPresentable,
+                 interactiveDismissalType: InteractiveDismissalType,
+                 completion: (() -> Void)? = nil) {
 
         let interactionController: InteractionControlling?
         switch interactiveDismissalType {
@@ -22,4 +25,5 @@ extension UIViewController {
         viewController.modalPresentationStyle = .custom
         present(viewController, animated: true, completion: completion)
     }
+    
 }

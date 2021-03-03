@@ -6,6 +6,7 @@ enum ButtonStyle {
 }
 
 extension UIButton {
+    
     static func make(image: UIImage? = nil,
                      contentColor: UIColor? = nil,
                      backgroundColor: UIColor = .clear,
@@ -52,6 +53,7 @@ extension UIButton {
 }
 
 extension UIView {
+    
     static func make(backgroundColor: UIColor = .clear,
                      alpha: CGFloat = 1.0,
                      borderColor: UIColor = .clear,
@@ -70,4 +72,5 @@ extension UIView {
         if let width = width { view.widthAnchor.constraint(equalToConstant: width).isActive = true }
         return view
     }
+    
 }

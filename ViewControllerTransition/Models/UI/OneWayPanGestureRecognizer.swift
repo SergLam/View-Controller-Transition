@@ -1,17 +1,20 @@
 import UIKit
 
 enum OneWayPanGestureDirection {
+    
     case up
     case down
 }
 
-class OneWayPanGestureRecognizer: UIPanGestureRecognizer {
+final class OneWayPanGestureRecognizer: UIPanGestureRecognizer {
+    
     var drag: Bool = false
     var moveX: Int = 0
     var moveY: Int = 0
     var direction: OneWayPanGestureDirection = .down
 
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
+        
         super.touchesMoved(touches, with: event)
 
         if state == .failed {
@@ -36,9 +39,11 @@ class OneWayPanGestureRecognizer: UIPanGestureRecognizer {
     }
 
     override func reset() {
+        
         super.reset()
         drag = false
         moveX = 0
         moveY = 0
     }
+    
 }

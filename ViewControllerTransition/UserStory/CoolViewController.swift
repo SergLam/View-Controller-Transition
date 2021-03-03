@@ -1,7 +1,7 @@
 import UIKit
-import Cartography
 
-class CoolViewController: UIViewController, CustomPresentable {
+final class CoolViewController: UIViewController, CustomPresentable {
+    
     var transitionManager: UIViewControllerTransitioningDelegate?
 
     let rectangleView: UIView = .make(backgroundColor: UIColor.systemPink.withAlphaComponent(0.5), cornerRadius: 12.0)
@@ -29,43 +29,71 @@ class CoolViewController: UIViewController, CustomPresentable {
 
     var rectangleHeightConstraint: NSLayoutConstraint!
 
+    // MARK: - Life cycle
     override func viewDidLoad() {
+        
         super.viewDidLoad()
-        view.backgroundColor = .systemBackground
-        view.layer.cornerRadius = 20.0
-        view.addSubview(rectangleView)
-        view.addSubview(sizeButton)
-        view.addSubview(dismissButton)
+        initialSetup()
+    }
 
-        constrain(rectangleView) {
-            $0.top == $0.superview!.top + 16.0
-            $0.leading == $0.superview!.leading + 16.0
-            $0.trailing == $0.superview!.trailing - 16.0
-            rectangleHeightConstraint = ($0.height == 100.0)
-        }
-
-        constrain(sizeButton, rectangleView) {
-            $0.top == $1.bottom + 16.0
-            $0.centerX == $0.superview!.centerX
-        }
-
-        constrain(dismissButton, sizeButton) {
-            $0.top == $1.bottom + 16.0
-            $0.width == $1.width
-            $0.centerX == $1.centerX
-            $0.bottom == $0.superview!.bottom - 16.0 ~ .init(999)
-        }
-
+    // MARK: - Private functions
+    private func initialSetup() {
+        
+        setupLayout()
+        
         sizeButton.addTarget(self, action: #selector(sizeButtonTapped), for: .touchUpInside)
         dismissButton.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
     }
+    
+    private func setupLayout() {
+        
+        view.backgroundColor = .systemBackground
+        view.layer.cornerRadius = 20.0
+        
+        view.addSubview(rectangleView)
 
-    @objc private func dismissButtonTapped() {
+        rectangleView.translatesAutoresizingMaskIntoConstraints = false
+        
+        rectangleHeightConstraint = rectangleView.heightAnchor.constraint(equalToConstant: 100.0)
+        let rectangleViewConstraints: [NSLayoutConstraint] = [
+        
+            rectangleView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 16),
+            rectangleView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 16),
+            rectangleView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -16),
+            rectangleHeightConstraint
+        ]
+        NSLayoutConstraint.activate(rectangleViewConstraints)
+
+        view.addSubview(sizeButton)
+        sizeButton.translatesAutoresizingMaskIntoConstraints = false
+        let sizeButtonConstraints: [NSLayoutConstraint] = [
+            sizeButton.topAnchor.constraint(equalTo: rectangleView.bottomAnchor, constant: 16),
+            sizeButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)
+        ]
+        NSLayoutConstraint.activate(sizeButtonConstraints)
+        
+        view.addSubview(dismissButton)
+        dismissButton.translatesAutoresizingMaskIntoConstraints = false
+        let dismissButtonConstraints: [NSLayoutConstraint] = [
+            dismissButton.topAnchor.constraint(equalTo: sizeButton.bottomAnchor, constant: 16),
+            dismissButton.widthAnchor.constraint(equalTo: sizeButton.widthAnchor),
+            dismissButton.centerXAnchor.constraint(equalTo: sizeButton.centerXAnchor),
+            dismissButton.bottomAnchor.constraint(lessThanOrEqualTo: self.view.bottomAnchor, constant: -16)
+        ]
+        NSLayoutConstraint.activate(dismissButtonConstraints)
+        
+    }
+    
+    // MARK: - Actions
+    @objc
+    private func dismissButtonTapped() {
         dismiss(animated: true)
     }
 
-    @objc private func sizeButtonTapped() {
+    @objc
+    private func sizeButtonTapped() {
         rectangleHeightConstraint.constant = CGFloat(Int.random(in: 50...400))
         updatePresentationLayout(animated: true)
     }
+    
 }
