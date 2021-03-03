@@ -119,20 +119,20 @@
 		7CD6A4F525EFA62A0097F898 /* PresentationController */ = {
 			isa = PBXGroup;
 			children = (
-				7CD6A4F625EFA6470097F898 /* AnimationManagment */,
+				7CD6A4F625EFA6470097F898 /* AnimationManagement */,
 				65830D13240EA4D3004DC2A4 /* ModalPresentationController.swift */,
 			);
 			path = PresentationController;
 			sourceTree = "<group>";
 		};
-		7CD6A4F625EFA6470097F898 /* AnimationManagment */ = {
+		7CD6A4F625EFA6470097F898 /* AnimationManagement */ = {
 			isa = PBXGroup;
 			children = (
 				65830D14240EA4D3004DC2A4 /* StandardInteractionController.swift */,
 				65830D0F240EA4D2004DC2A4 /* ModalTransitionAnimator.swift */,
 				65830D16240EA4D3004DC2A4 /* ModalTransitionManager.swift */,
 			);
-			path = AnimationManagment;
+			path = AnimationManagement;
 			sourceTree = "<group>";
 		};
 		7CD6A4F725EFA6790097F898 /* Protocols */ = {

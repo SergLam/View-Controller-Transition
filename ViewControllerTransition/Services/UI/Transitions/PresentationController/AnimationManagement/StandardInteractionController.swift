@@ -179,7 +179,6 @@ final class StandardInteractionController: NSObject, InteractionControlling {
         }
     }
 
-    
     // MARK: - Helpers
     private func springVelocity(distanceToTravel: CGFloat, gestureVelocity: CGFloat) -> CGFloat {
         
