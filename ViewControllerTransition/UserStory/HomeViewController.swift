@@ -24,7 +24,7 @@ final class HomeViewController: UIViewController {
     
     private func setupLayout() {
         
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = UIColor.white
         view.addSubview(presentButton)
         
         presentButton.translatesAutoresizingMaskIntoConstraints = false
